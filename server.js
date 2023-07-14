@@ -51,8 +51,59 @@ app.get('/userinfo/:userId', async (req, res) => {
       });
       const user = response.data;
   
-      if (user.public_flags && typeof user.public_flags.toArray === 'function') {
-        const badges = user.public_flags.toArray().map((flag) => `https://cdn.discordapp.com/attachments/876658705442764032/876660407743193364/${flag}.png`);
+      if (user.flags) {
+        const badges = [];
+  
+        if (user.flags & 1 << 0) {
+          badges.push('discordstaff');
+        }
+        if (user.flags & 1 << 1) {
+          badges.push('olddiscordpartner');
+        }
+        if (user.flags & 1 << 2) {
+          badges.push('hypesquadevents');
+        }
+        if (user.flags & 1 << 3) {
+          badges.push('discordbughunter1');
+        }
+        if (user.flags & 1 << 6) {
+          badges.push('hypesquadbravery');
+        }
+        if (user.flags & 1 << 7) {
+          badges.push('hypesquadbrilliance');
+        }
+        if (user.flags & 1 << 8) {
+          badges.push('hypesquadbalance');
+        }
+        if (user.flags & 1 << 9) {
+          badges.push('discordearlysupporter');
+        }
+        if (user.flags & 1 << 10) {
+          badges.push('discordstaff');
+        }
+        if (user.flags & 1 << 12) {
+          badges.push('SYSTEM');
+        }
+        if (user.flags & 1 << 14) {
+          badges.push('discordbughunter2');
+        }
+        if (user.flags & 1 << 19) {
+          badges.push('discordnitro');
+        }
+        if (user.flags & 1 << 20) {
+          badges.push('discordmod');
+        }
+        if (user.flags & 1 << 21) {
+          badges.push('activedeveloper');
+        }
+        if (user.premium_type === 1) {
+          badges.push('discordnitro');
+        } else if (user.premium_type === 2) {
+          badges.push('1088605476788375573');
+        }
+        if (user.public_flags & 1 << 21) {
+          badges.push('EARLY_VERIFIED_DEVELOPER');
+        } 
         return badges;
       }
       return [];
@@ -60,8 +111,8 @@ app.get('/userinfo/:userId', async (req, res) => {
       console.error(error);
       return [];
     }
-  }
-
+  }  
+  
   const badges = await getBadges(userId);
 
   const userInfo = {

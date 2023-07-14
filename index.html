@@ -52,7 +52,7 @@
           <img src="${data.avatarURL}" alt="Foto de Perfil">
           <div class="badges">
             <p><strong>Insígnias:</strong></p>
-            ${data.badges.map((badge) => `<img src="${badge}" alt="Insignia">`).join('')}
+            ${data.badges.map(badge => `<img src="https://raw.githubusercontent.com/mezotv/discord-badges/main/assets/${badge}.svg" alt="Insignia">`).join('')}
           </div>
         `;
       } else {
