@@ -35,7 +35,7 @@ app.get('/userinfo/:userId', async (req, res) => {
   res.json(userInfo);
 });
 
-client.login('MTA5Nzk5NDY0NzAyMTgxMzgzMA.GVtlmI.J6ZvGReujskVKqBTi5fYG2teMg3VklFaqJ_7Nk');
+client.login();
 
 app.listen(3000, () => {
   console.log('Servidor iniciado na porta 3000');
