@@ -1,5 +1,4 @@
 const express = require('express');
-const Discord = require('discord.js');
 const app = express();
 const { Client, Events, GatewayIntentBits } = require('discord.js');
 const config = require("./config.json")
