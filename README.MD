@@ -29,6 +29,11 @@ node server.js
 
 Logo apos abra localhost:3000
 
+## Obter informações API
+
+```
+localhost:3000/userinfo/<ID>
+```
 
 ## 📄 Licença
 

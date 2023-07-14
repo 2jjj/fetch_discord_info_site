@@ -20,6 +20,14 @@
     #result {
       margin-top: 20px;
     }
+    .badges {
+      margin-top: 10px;
+    }
+    .badges img {
+      width: 30px;
+      height: 30px;
+      margin-right: 5px;
+    }
   </style>
 </head>
 <body>
@@ -42,6 +50,10 @@
           <p><strong>Data de criação:</strong> ${data.formattedDate}</p>
           <p><strong>Foto de Perfil:</strong></p>
           <img src="${data.avatarURL}" alt="Foto de Perfil">
+          <div class="badges">
+            <p><strong>Insígnias:</strong></p>
+            ${data.badges.map((badge) => `<img src="${badge}" alt="Insignia">`).join('')}
+          </div>
         `;
       } else {
         document.getElementById('result').innerHTML = `<p>${data.error}</p>`;
