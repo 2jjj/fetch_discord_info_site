@@ -24,16 +24,32 @@ app.get('/userinfo/:userId', async (req, res) => {
     return;
   }
 
+  const banner = user.bannerURL({ format: 'png', dynamic: true, size: 1024 });
   const avatarURL = user.avatarURL({ format: 'png', dynamic: true, size: 1024 });
   const username = user.username;
-  const id = user.id
+  const id = user.id;
+  const criacao = user.createdAt;
+  const formattedDate = formatDate(criacao);
 
+  function formatDate(date) {
+    const day = date.getDate().toString().padStart(2, '0');
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const year = date.getFullYear();
+    const hours = date.getHours().toString().padStart(2, '0');
+    const minutes = date.getMinutes().toString().padStart(2, '0');
+    const seconds = date.getSeconds().toString().padStart(2, '0');
+  
+    return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}`;
+  }
   const userInfo = {
     avatarURL,
     username,
     id,
+    criacao,
+    banner,
+    formattedDate,
   };
-
+  console.log(user)
   res.json(userInfo);
 });
 
