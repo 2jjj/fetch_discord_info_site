@@ -2,6 +2,7 @@ const express = require('express');
 const Discord = require('discord.js');
 const app = express();
 const { Client, Events, GatewayIntentBits } = require('discord.js');
+const config = require("./config.json")
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
@@ -35,7 +36,7 @@ app.get('/userinfo/:userId', async (req, res) => {
   res.json(userInfo);
 });
 
-client.login();
+client.login(config.token);
 
 app.listen(3000, () => {
   console.log('Servidor iniciado na porta 3000');
