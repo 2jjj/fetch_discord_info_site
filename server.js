@@ -26,10 +26,12 @@ app.get('/userinfo/:userId', async (req, res) => {
 
   const avatarURL = user.avatarURL({ format: 'png', dynamic: true, size: 1024 });
   const username = user.username;
+  const id = user.id
 
   const userInfo = {
     avatarURL,
     username,
+    id,
   };
 
   res.json(userInfo);
