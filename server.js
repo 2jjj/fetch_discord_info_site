@@ -28,8 +28,7 @@ app.get('/userinfo/:userId', async (req, res) => {
   const avatarURL = user.avatarURL({ format: 'png', dynamic: true, size: 1024 });
   const username = user.username;
   const id = user.id;
-  const criacao = user.createdAt;
-  const formattedDate = formatDate(criacao);
+  const formattedDate = formatDate(user.createdAt);
 
   function formatDate(date) {
     const day = date.getDate().toString().padStart(2, '0');
@@ -45,7 +44,6 @@ app.get('/userinfo/:userId', async (req, res) => {
     avatarURL,
     username,
     id,
-    criacao,
     banner,
     formattedDate,
   };
